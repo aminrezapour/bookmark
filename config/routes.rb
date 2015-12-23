@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resources :topics
   end
 
+  resources :topics, only: [] do
+    resources :links, except: [:index]
+  end
+
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
