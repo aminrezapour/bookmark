@@ -1,2 +1,12 @@
-<h1>Links#edit</h1>
-<p>Find me in app/views/links/edit.html.erb</p>
+<h1>Edit Link</h1>
+
+<%= form_for [@link.topic, @link] do |f| %>
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, class: 'form-control', placeholder: "Enter link" %>
+
+  </div>
+
+  <%= f.submit "Save", class: 'btn btn-success' %>
+
+<% end %>

@@ -1,0 +1,10 @@
+<%= form_for [topic, link], remote: true do |f| %>
+  <div class="form-group">
+    <!-- sr-only doesn't show the label, just a placeholder -->
+    <%= f.label :url, class: 'sr-only' %>
+    <%= f.text_field :url, class: 'form-control', placeholder: "Enter a new link" %>
+  </div>
+
+  <%= f.submit "Submit Link", class: 'btn btn-default pull-right' %>
+
+<% end %>

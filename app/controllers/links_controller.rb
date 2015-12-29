@@ -11,8 +11,11 @@ class LinksController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @link = @topic.links.build(link_params)
+    @link.user = current_user
 
-    redirect_to [@topic, @link] if @link.save
+    authorize @link
+
+    redirect_to [current_user, @topic] if @link.save
   end
 
   def edit
@@ -21,13 +24,19 @@ class LinksController < ApplicationController
 
   def update
     @link = Link.find(params[:id])
-    @Link.assign_attributes(link_params)
+
+    authorize @link
+
+    @link.assign_attributes(link_params)
 
     redirect_to [@link.topic, @link] if @link.save
   end
 
   def destroy
     @link = Link.find(params[:id])
+
+    authorize @link
+
     redirect_to [current_user, @link.topic] if @link.destroy
   end
 
