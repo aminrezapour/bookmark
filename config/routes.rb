@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :links, except: [:index]
   end
 
+  resources :links, only: [] do
+    resources :likes, only: [:create, :destroy]
+  end
+
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
