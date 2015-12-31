@@ -1,11 +1,13 @@
-<div class="media-body">
-  <h4 class="media-heading">
+<div>
+    <div class="media-body">
+      <h4 class="media-heading">
 
-    <%= link_to link.url, link.url %>
-    <%= link_to "Edit", edit_topic_link_path(link.topic, link), class: 'btn btn-success' %>
-    <%= link_to "Delete", [link.topic, link], method: :delete, class: 'btn btn-danger', remote: true %>
-    <%= render partial: 'likes/like', locals: { link: link } %>
+        <%= link_to link.url, "http://#{link.url}", :target => '_blank' %>
+        <%= link_to "Edit", edit_topic_link_path(link.topic, link), class: 'btn btn-success' %>
+        <%= link_to "Delete", [link.topic, link], method: :delete, class: 'btn btn-danger', remote: true %>
+        <%= render partial: 'likes/like', locals: { link: link } %>
 
-  </h4>
+      </h4>
 
+    </div>
 </div>

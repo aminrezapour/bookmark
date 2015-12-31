@@ -8,10 +8,10 @@ class LikesController < ApplicationController
 
      if like.save
        flash[:notice] = "Like successful."
-       redirect_to @link
+       redirect_to [@link.topic, @link]
      else
        flash[:error] = "There was an error liking the link"
-       redirect_to @link
+       redirect_to [@link.topic, @link]
      end
    end
 
@@ -23,10 +23,10 @@ class LikesController < ApplicationController
 
      if like.destroy
        flash[:notice] = "Unlike successful."
-       redirect_to @link
+       redirect_to [@link.topic, @link]
      else
        flash[:error] = "There was an error unliking the link"
-       redirect_to @link
+       redirect_to [@link.topic, @link]
      end
    end
 
